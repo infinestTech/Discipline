@@ -346,7 +346,7 @@ const HabitTable = ({
                             {day.checked && <CheckIcon className="w-3 h-3 text-neon-green" />}
                           </button>
 
-                          {/* Hours Input */}
+                          {/* Hours Input - Always editable for past/today */}
                           <input
                             type="number"
                             step="0.25"
@@ -354,12 +354,12 @@ const HabitTable = ({
                             max="24"
                             value={displayHours || ''}
                             placeholder="0"
-                            disabled={!day.checked || isFuture}
+                            disabled={isFuture}
                             onChange={(e) => handleHoursChange(habit.id, dayIndex, e.target.value)}
                             onFocus={() => setActiveCell(cellKey)}
                             onBlur={() => setActiveCell(null)}
                             className={`w-14 h-6 text-center text-xs rounded border transition-all font-mono ${
-                              !day.checked || isFuture
+                              isFuture
                                 ? 'bg-trader-bg/30 border-trader-border/20 text-trader-muted/50 cursor-not-allowed'
                                 : `bg-trader-bg border-trader-border/50 text-trader-text 
                                    focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan/30 
@@ -401,9 +401,9 @@ const HabitTable = ({
                   <td className="py-3 px-1 relative">
                     <button
                       onClick={() => setActiveMenu(activeMenu === habit.id ? null : habit.id)}
-                      className="p-1.5 rounded opacity-0 group-hover:opacity-100 hover:bg-trader-hover transition-all"
+                      className="p-1.5 rounded hover:bg-trader-hover transition-all"
                     >
-                      <EllipsisVerticalIcon className="w-4 h-4 text-trader-muted" />
+                      <EllipsisVerticalIcon className="w-4 h-4 text-trader-muted hover:text-trader-text" />
                     </button>
 
                     {activeMenu === habit.id && (

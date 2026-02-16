@@ -11,6 +11,7 @@ import {
   XMarkIcon,
   ChevronDownIcon,
 } from '@heroicons/react/24/outline';
+import { useToast } from '../../contexts/ToastContext';
 import type { HabitWithWeekLog } from '../../types';
 import {
   getWeekIdList,
@@ -42,6 +43,7 @@ const Sidebar = ({
   habitsWithLogs,
 }: SidebarProps) => {
   const [isWeekDropdownOpen, setIsWeekDropdownOpen] = useState(false);
+  const { showToast } = useToast();
 
   // Generate week list (12 past + current + 4 future)
   const weekList = useMemo(() => getWeekIdList(12, 4), []);
@@ -131,6 +133,7 @@ const Sidebar = ({
             {navItems.map((item, index) => (
               <button
                 key={index}
+                onClick={() => !item.active && showToast('info', `${item.label} coming soon`)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-colors ${
                   item.active
                     ? 'bg-neon-cyan/10 text-neon-cyan'
