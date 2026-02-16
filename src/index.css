@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-trader-bg text-trader-text antialiased;
+    margin: 0;
+    min-height: 100vh;
+  }
+  
+  * {
+    @apply box-border;
+  }
+}
+
+@layer components {
+  /* Card component */
+  .trader-card {
+    @apply bg-trader-card border border-trader-border rounded-lg p-4 transition-all duration-200;
+  }
+  
+  .trader-card:hover {
+    @apply border-trader-hover shadow-lg;
+  }
+  
+  /* Neon glow effects */
+  .glow-green {
+    @apply shadow-neon-green;
+  }
+  
+  .glow-red {
+    @apply shadow-neon-red;
+  }
+  
+  .glow-cyan {
+    @apply shadow-neon-cyan;
+  }
+  
+  /* Status indicators */
+  .status-positive {
+    @apply text-neon-green;
+  }
+  
+  .status-negative {
+    @apply text-neon-red;
+  }
+  
+  .status-neutral {
+    @apply text-neon-cyan;
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    @apply px-4 py-2 rounded-md bg-neon-cyan/20 text-neon-cyan border border-neon-cyan/30 
+           hover:bg-neon-cyan/30 transition-all duration-200 font-medium;
+  }
+  
+  .btn-success {
+    @apply px-4 py-2 rounded-md bg-neon-green/20 text-neon-green border border-neon-green/30 
+           hover:bg-neon-green/30 transition-all duration-200 font-medium;
+  }
+  
+  .btn-danger {
+    @apply px-4 py-2 rounded-md bg-neon-red/20 text-neon-red border border-neon-red/30 
+           hover:bg-neon-red/30 transition-all duration-200 font-medium;
+  }
+  
+  /* Progress bar */
+  .progress-bar {
+    @apply h-2 bg-trader-border rounded-full overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply h-full transition-all duration-500 ease-out;
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar */
+  .scrollbar-trader {
+    scrollbar-width: thin;
+    scrollbar-color: #1e2a3a #0b0f14;
+  }
+  
+  .scrollbar-trader::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-trader::-webkit-scrollbar-track {
+    background: #0b0f14;
+  }
+  
+  .scrollbar-trader::-webkit-scrollbar-thumb {
+    background: #1e2a3a;
+    border-radius: 3px;
+  }
+  
+  .scrollbar-trader::-webkit-scrollbar-thumb:hover {
+    background: #2a3a4a;
+  }
+}
+
+/* Week transition animations */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 12px 4px rgba(0, 255, 255, 0.2);
+  }
+}
+
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Animation utility classes */
+.animate-slide-left {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-ticker {
+  animation: ticker-scroll 30s linear infinite;
+}
+
+/* Staggered animation delays for lists */
+.stagger-1 { animation-delay: 50ms; }
+.stagger-2 { animation-delay: 100ms; }
+.stagger-3 { animation-delay: 150ms; }
+.stagger-4 { animation-delay: 200ms; }
+.stagger-5 { animation-delay: 250ms; }
+.stagger-6 { animation-delay: 300ms; }
+.stagger-7 { animation-delay: 350ms; }
