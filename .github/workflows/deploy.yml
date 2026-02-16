@@ -40,8 +40,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # Set base URL to repository name for GitHub Pages
-          VITE_BASE_URL: /${{ github.event.repository.name }}/
+          # For custom domain, use root path /
+          VITE_BASE_URL: /
           # Firebase config from secrets
           VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
           VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
